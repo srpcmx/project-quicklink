@@ -3,6 +3,10 @@ name: Destroy AWS Infrastructure
 on:
   workflow_dispatch: # This allows you to run the workflow manually
 
+permissions:
+  id-token: write
+  contents: read
+
 jobs:
   terraform-destroy:
     runs-on: ubuntu-latest
