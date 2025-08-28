@@ -1,0 +1,271 @@
+{
+  "configuration" : { },
+  "description" : "Description",
+  "documentation" : { },
+  "id" : 1,
+  "lastModifiedDate" : "2025-08-27T23:39:58Z",
+  "model" : {
+    "deploymentNodes" : [ {
+      "children" : [ {
+        "children" : [ {
+          "children" : [ {
+            "containerInstances" : [ {
+              "containerId" : "3",
+              "deploymentGroups" : [ "Default" ],
+              "environment" : "Live",
+              "id" : "14",
+              "instanceId" : 1,
+              "properties" : {
+                "structurizr.dsl.identifier" : "transactr24"
+              },
+              "relationships" : [ {
+                "description" : "Reads from and writes to",
+                "destinationId" : "17",
+                "id" : "18",
+                "linkedRelationshipId" : "7",
+                "sourceId" : "14"
+              } ],
+              "tags" : "Container Instance"
+            } ],
+            "environment" : "Live",
+            "id" : "13",
+            "instances" : "1",
+            "name" : "Amazon Linux",
+            "properties" : {
+              "structurizr.dsl.identifier" : "cc0ac098-65ca-4d4b-94ff-eb09a56509c8"
+            },
+            "tags" : "Element,Deployment Node"
+          } ],
+          "environment" : "Live",
+          "id" : "12",
+          "instances" : "1",
+          "name" : "Amazon EC2",
+          "properties" : {
+            "structurizr.dsl.identifier" : "339d170e-89d0-43e2-94a5-1a9404101ac5"
+          },
+          "tags" : "Element,Deployment Node,Amazon Web Services - EC2"
+        }, {
+          "children" : [ {
+            "containerInstances" : [ {
+              "containerId" : "4",
+              "deploymentGroups" : [ "Default" ],
+              "environment" : "Live",
+              "id" : "17",
+              "instanceId" : 1,
+              "properties" : {
+                "structurizr.dsl.identifier" : "22fc477a-bc1c-49e7-aa8f-caa4ce7fdfa7"
+              },
+              "tags" : "Container Instance"
+            } ],
+            "environment" : "Live",
+            "id" : "16",
+            "instances" : "1",
+            "name" : "PostgreSQL",
+            "properties" : {
+              "structurizr.dsl.identifier" : "e9ab52b8-0f26-4cb2-98cf-665888db7890"
+            },
+            "tags" : "Element,Deployment Node,Amazon Web Services - RDS PostgreSQL instance"
+          } ],
+          "environment" : "Live",
+          "id" : "15",
+          "instances" : "1",
+          "name" : "Amazon RDS",
+          "properties" : {
+            "structurizr.dsl.identifier" : "41970900-03f3-44bf-a04b-1f1795beea2e"
+          },
+          "tags" : "Element,Deployment Node,Amazon Web Services - RDS"
+        } ],
+        "environment" : "Live",
+        "id" : "9",
+        "infrastructureNodes" : [ {
+          "environment" : "Live",
+          "id" : "10",
+          "name" : "Route 53",
+          "properties" : {
+            "structurizr.dsl.identifier" : "route53"
+          },
+          "relationships" : [ {
+            "description" : "Forwards requests to",
+            "destinationId" : "11",
+            "id" : "19",
+            "sourceId" : "10",
+            "tags" : "Relationship",
+            "technology" : "HTTPS"
+          } ],
+          "tags" : "Element,Infrastructure Node,Amazon Web Services - Route 53"
+        }, {
+          "environment" : "Live",
+          "id" : "11",
+          "name" : "API Gateway",
+          "properties" : {
+            "structurizr.dsl.identifier" : "apigateway"
+          },
+          "relationships" : [ {
+            "description" : "Forwards requests to",
+            "destinationId" : "14",
+            "id" : "20",
+            "sourceId" : "11",
+            "tags" : "Relationship",
+            "technology" : "HTTPS"
+          } ],
+          "tags" : "Element,Infrastructure Node,Amazon Web Services - API Gateway"
+        } ],
+        "instances" : "1",
+        "name" : "US-East-1",
+        "properties" : {
+          "structurizr.dsl.identifier" : "db399ee5-101c-4ab9-9fa2-19a6d4bc8395"
+        },
+        "tags" : "Element,Deployment Node,Amazon Web Services - Region"
+      } ],
+      "environment" : "Live",
+      "id" : "8",
+      "instances" : "1",
+      "name" : "Amazon Web Services",
+      "properties" : {
+        "structurizr.dsl.identifier" : "9ff40fec-8633-4e51-a368-49054172707f"
+      },
+      "tags" : "Element,Deployment Node,Amazon Web Services - Cloud"
+    } ],
+    "people" : [ {
+      "id" : "1",
+      "location" : "Unspecified",
+      "name" : "User",
+      "properties" : {
+        "structurizr.dsl.identifier" : "u"
+      },
+      "relationships" : [ {
+        "description" : "Uses",
+        "destinationId" : "3",
+        "id" : "5",
+        "sourceId" : "1",
+        "tags" : "Relationship"
+      }, {
+        "description" : "Uses",
+        "destinationId" : "2",
+        "id" : "6",
+        "linkedRelationshipId" : "5",
+        "sourceId" : "1"
+      } ],
+      "tags" : "Element,Person"
+    } ],
+    "softwareSystems" : [ {
+      "containers" : [ {
+        "documentation" : { },
+        "id" : "3",
+        "name" : "Transact R24",
+        "properties" : {
+          "structurizr.dsl.identifier" : "r24"
+        },
+        "relationships" : [ {
+          "description" : "Reads from and writes to",
+          "destinationId" : "4",
+          "id" : "7",
+          "sourceId" : "3",
+          "tags" : "Relationship"
+        } ],
+        "tags" : "Element,Container",
+        "technology" : "Docker container"
+      }, {
+        "documentation" : { },
+        "id" : "4",
+        "name" : "Database",
+        "properties" : {
+          "structurizr.dsl.identifier" : "database"
+        },
+        "tags" : "Element,Container",
+        "technology" : "Relational database schema"
+      } ],
+      "documentation" : { },
+      "id" : "2",
+      "location" : "Unspecified",
+      "name" : "Software System",
+      "properties" : {
+        "structurizr.dsl.identifier" : "s"
+      },
+      "tags" : "Element,Software System"
+    } ]
+  },
+  "name" : "Name",
+  "properties" : {
+    "structurizr.dsl" : "d29ya3NwYWNlIHsKCiAgICBtb2RlbCB7CiAgICAgICAgdSA9IHBlcnNvbiAiVXNlciIKICAgICAgICBzID0gc29mdHdhcmVTeXN0ZW0gIlNvZnR3YXJlIFN5c3RlbSIgewogICAgICAgICAgICByMjQgPSBjb250YWluZXIgIlRyYW5zYWN0IFIyNCIgIiIgIkRvY2tlciBjb250YWluZXIiCiAgICAgICAgICAgIGRhdGFiYXNlID0gY29udGFpbmVyICJEYXRhYmFzZSIgIiIgIlJlbGF0aW9uYWwgZGF0YWJhc2Ugc2NoZW1hIgogICAgICAgIH0KCiAgICAgICAgdSAtPiByMjQgIlVzZXMiCiAgICAgICAgcjI0IC0+IGRhdGFiYXNlICJSZWFkcyBmcm9tIGFuZCB3cml0ZXMgdG8iCiAgICAgICAgCiAgICAgICAgbGl2ZSA9IGRlcGxveW1lbnRFbnZpcm9ubWVudCAiTGl2ZSIgewogICAgICAgICAgICBkZXBsb3ltZW50Tm9kZSAiQW1hem9uIFdlYiBTZXJ2aWNlcyIgewogICAgICAgICAgICAgICAgdGFncyAiQW1hem9uIFdlYiBTZXJ2aWNlcyAtIENsb3VkIgogICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICBkZXBsb3ltZW50Tm9kZSAiVVMtRWFzdC0xIiB7CiAgICAgICAgICAgICAgICAgICAgdGFncyAiQW1hem9uIFdlYiBTZXJ2aWNlcyAtIFJlZ2lvbiIKICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgIHJvdXRlNTMgPSBpbmZyYXN0cnVjdHVyZU5vZGUgIlJvdXRlIDUzIiB7CiAgICAgICAgICAgICAgICAgICAgICAgIHRhZ3MgIkFtYXpvbiBXZWIgU2VydmljZXMgLSBSb3V0ZSA1MyIKICAgICAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgICAgICAgYXBpR2F0ZXdheSA9IGluZnJhc3RydWN0dXJlTm9kZSAiQVBJIEdhdGV3YXkiIHsKICAgICAgICAgICAgICAgICAgICAgICAgdGFncyAiQW1hem9uIFdlYiBTZXJ2aWNlcyAtIEFQSSBHYXRld2F5IgogICAgICAgICAgICAgICAgICAgIH0KCiAgICAgICAgICAgICAgICAgICAgZGVwbG95bWVudE5vZGUgIkFtYXpvbiBFQzIiIHsKICAgICAgICAgICAgICAgICAgICAgICAgdGFncyAiQW1hem9uIFdlYiBTZXJ2aWNlcyAtIEVDMiIKICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgIGRlcGxveW1lbnROb2RlICJBbWF6b24gTGludXgiIHsKICAgICAgICAgICAgICAgICAgICAgICAgICAgIHRyYW5zYWN0UjI0ID0gY29udGFpbmVySW5zdGFuY2UgcjI0CiAgICAgICAgICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgICAgICB9CgogICAgICAgICAgICAgICAgICAgIGRlcGxveW1lbnROb2RlICJBbWF6b24gUkRTIiB7CiAgICAgICAgICAgICAgICAgICAgICAgIHRhZ3MgIkFtYXpvbiBXZWIgU2VydmljZXMgLSBSRFMiCiAgICAgICAgICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgICAgICBkZXBsb3ltZW50Tm9kZSAiUG9zdGdyZVNRTCIgewogICAgICAgICAgICAgICAgICAgICAgICAgICAgdGFncyAiQW1hem9uIFdlYiBTZXJ2aWNlcyAtIFJEUyBQb3N0Z3JlU1FMIGluc3RhbmNlIgogICAgICAgICAgICAgICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICAgICAgICAgICAgICBjb250YWluZXJJbnN0YW5jZSBkYXRhYmFzZQogICAgICAgICAgICAgICAgICAgICAgICB9CiAgICAgICAgICAgICAgICAgICAgfQogICAgICAgICAgICAgICAgfQogICAgICAgICAgICB9CiAgICAgICAgICAgIAogICAgICAgICAgICByb3V0ZTUzIC0+IGFwaUdhdGV3YXkgIkZvcndhcmRzIHJlcXVlc3RzIHRvIiAiSFRUUFMiCiAgICAgICAgICAgIGFwaUdhdGV3YXkgLT4gdHJhbnNhY3RSMjQgIkZvcndhcmRzIHJlcXVlc3RzIHRvIiAiSFRUUFMiCiAgICAgICAgfQogICAgfQoKICAgIHZpZXdzIHsKICAgICAgICBkZXBsb3ltZW50IHMgbGl2ZSB7CiAgICAgICAgICAgIGluY2x1ZGUgKgogICAgICAgICAgICBhdXRvTGF5b3V0IGxyCiAgICAgICAgfQoKICAgICAgICBzdHlsZXMgewogICAgICAgICAgICBlbGVtZW50ICJFbGVtZW50IiB7CiAgICAgICAgICAgICAgICBzaGFwZSBSb3VuZGVkQm94CiAgICAgICAgICAgICAgICBiYWNrZ3JvdW5kICNmZmZmZmYKICAgICAgICAgICAgICAgIGNvbG9yICMwMDAwMDAKICAgICAgICAgICAgfQogICAgICAgIH0KCiAgICAgICAgdGhlbWUgaHR0cHM6Ly9zdGF0aWMuc3RydWN0dXJpenIuY29tL3RoZW1lcy9hbWF6b24td2ViLXNlcnZpY2VzLTIwMjAuMDQuMzAvdGhlbWUuanNvbgogICAgfQogICAgCn0="
+  },
+  "views" : {
+    "configuration" : {
+      "branding" : { },
+      "styles" : {
+        "elements" : [ {
+          "background" : "#ffffff",
+          "color" : "#000000",
+          "shape" : "RoundedBox",
+          "tag" : "Element"
+        } ]
+      },
+      "terminology" : { },
+      "themes" : [ "https://static.structurizr.com/themes/amazon-web-services-2020.04.30/theme.json" ]
+    },
+    "deploymentViews" : [ {
+      "automaticLayout" : {
+        "applied" : false,
+        "edgeSeparation" : 0,
+        "implementation" : "Graphviz",
+        "nodeSeparation" : 300,
+        "rankDirection" : "LeftRight",
+        "rankSeparation" : 300,
+        "vertices" : false
+      },
+      "elements" : [ {
+        "id" : "8",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "9",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "10",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "11",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "12",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "13",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "14",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "15",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "16",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "17",
+        "x" : 0,
+        "y" : 0
+      } ],
+      "environment" : "Live",
+      "generatedKey" : true,
+      "key" : "Deployment-001",
+      "order" : 1,
+      "relationships" : [ {
+        "id" : "18"
+      }, {
+        "id" : "19"
+      }, {
+        "id" : "20"
+      } ],
+      "softwareSystemId" : "2"
+    } ]
+  }
+}

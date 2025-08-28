@@ -1,0 +1,684 @@
+{
+  "configuration" : { },
+  "description" : "A URL shortening service.",
+  "documentation" : { },
+  "id" : 2,
+  "lastModifiedAgent" : "structurizr-ui",
+  "lastModifiedDate" : "2025-08-27T23:40:36Z",
+  "model" : {
+    "deploymentNodes" : [ {
+      "children" : [ {
+        "children" : [ {
+          "containerInstances" : [ {
+            "containerId" : "5",
+            "deploymentGroups" : [ "Default" ],
+            "environment" : "Production",
+            "id" : "28",
+            "instanceId" : 1,
+            "properties" : {
+              "structurizr.dsl.identifier" : "efce8f60-ec67-473f-8703-b880d495f3db"
+            },
+            "relationships" : [ {
+              "description" : "Routes 'POST /links' to",
+              "destinationId" : "30",
+              "id" : "31",
+              "linkedRelationshipId" : "17",
+              "sourceId" : "28"
+            }, {
+              "description" : "Routes 'GET /{shortCode}' to",
+              "destinationId" : "32",
+              "id" : "33",
+              "linkedRelationshipId" : "18",
+              "sourceId" : "28"
+            }, {
+              "description" : "Routes 'GET /links/{shortCode}/analytics' to",
+              "destinationId" : "34",
+              "id" : "35",
+              "linkedRelationshipId" : "19",
+              "sourceId" : "28"
+            } ],
+            "tags" : "Container Instance"
+          } ],
+          "environment" : "Production",
+          "id" : "27",
+          "instances" : "1",
+          "name" : "API Gateway",
+          "properties" : {
+            "structurizr.dsl.identifier" : "6124855b-e277-4b95-bc75-30a1c08c1551"
+          },
+          "tags" : "Element,Deployment Node,Amazon Web Services - API Gateway"
+        }, {
+          "containerInstances" : [ {
+            "containerId" : "6",
+            "deploymentGroups" : [ "Default" ],
+            "environment" : "Production",
+            "id" : "30",
+            "instanceId" : 1,
+            "properties" : {
+              "structurizr.dsl.identifier" : "a88f4292-778c-4942-86c8-1026f9d0c4bc"
+            },
+            "relationships" : [ {
+              "description" : "Publishes 'UrlCreatedEvent'",
+              "destinationId" : "42",
+              "id" : "43",
+              "linkedRelationshipId" : "23",
+              "sourceId" : "30",
+              "technology" : "AWS SDK"
+            } ],
+            "tags" : "Container Instance,Deployment Node"
+          }, {
+            "containerId" : "7",
+            "deploymentGroups" : [ "Default" ],
+            "environment" : "Production",
+            "id" : "32",
+            "instanceId" : 1,
+            "properties" : {
+              "structurizr.dsl.identifier" : "e656b9ed-2e2b-48b0-9eeb-d703b9362162"
+            },
+            "relationships" : [ {
+              "description" : "Reads link mapping from",
+              "destinationId" : "37",
+              "id" : "38",
+              "linkedRelationshipId" : "20",
+              "sourceId" : "32",
+              "technology" : "AWS SDK"
+            }, {
+              "description" : "Publishes 'UrlAccessedEvent'",
+              "destinationId" : "42",
+              "id" : "44",
+              "linkedRelationshipId" : "22",
+              "sourceId" : "32",
+              "technology" : "AWS SDK"
+            } ],
+            "tags" : "Container Instance,Deployment Node"
+          }, {
+            "containerId" : "8",
+            "deploymentGroups" : [ "Default" ],
+            "environment" : "Production",
+            "id" : "34",
+            "instanceId" : 1,
+            "properties" : {
+              "structurizr.dsl.identifier" : "a73ae690-eca9-427a-a5a4-7a97b6deeb79"
+            },
+            "relationships" : [ {
+              "description" : "Reads/Writes analytics data",
+              "destinationId" : "39",
+              "id" : "40",
+              "linkedRelationshipId" : "21",
+              "sourceId" : "34",
+              "technology" : "AWS SDK"
+            } ],
+            "tags" : "Container Instance,Deployment Node"
+          } ],
+          "environment" : "Production",
+          "id" : "29",
+          "instances" : "1",
+          "name" : "AWS Lambda",
+          "properties" : {
+            "structurizr.dsl.identifier" : "6291b15e-ebe8-42cb-af7d-723288e9b76e"
+          },
+          "tags" : "Element,Deployment Node,Amazon Web Services - Lambda"
+        }, {
+          "containerInstances" : [ {
+            "containerId" : "9",
+            "deploymentGroups" : [ "Default" ],
+            "environment" : "Production",
+            "id" : "37",
+            "instanceId" : 1,
+            "properties" : {
+              "structurizr.dsl.identifier" : "fd314053-2dd8-4282-96a2-2f8cc17ec846"
+            },
+            "tags" : "Container Instance"
+          }, {
+            "containerId" : "10",
+            "deploymentGroups" : [ "Default" ],
+            "environment" : "Production",
+            "id" : "39",
+            "instanceId" : 1,
+            "properties" : {
+              "structurizr.dsl.identifier" : "88b4c182-4ae1-4481-96d9-1adaa57e97dc"
+            },
+            "tags" : "Container Instance"
+          } ],
+          "environment" : "Production",
+          "id" : "36",
+          "instances" : "1",
+          "name" : "Amazon DynamoDB",
+          "properties" : {
+            "structurizr.dsl.identifier" : "9779d12a-ff9f-4118-8b75-307998a8f89f"
+          },
+          "tags" : "Element,Deployment Node,Amazon Web Services - DynamoDB"
+        }, {
+          "containerInstances" : [ {
+            "containerId" : "11",
+            "deploymentGroups" : [ "Default" ],
+            "environment" : "Production",
+            "id" : "42",
+            "instanceId" : 1,
+            "properties" : {
+              "structurizr.dsl.identifier" : "cfad267a-afaa-4b9a-a4a0-6aa5fdbb39cf"
+            },
+            "relationships" : [ {
+              "description" : "Pushes events to",
+              "destinationId" : "34",
+              "id" : "45",
+              "linkedRelationshipId" : "24",
+              "sourceId" : "42"
+            } ],
+            "tags" : "Container Instance"
+          } ],
+          "environment" : "Production",
+          "id" : "41",
+          "instances" : "1",
+          "name" : "Amazon EventBridge",
+          "properties" : {
+            "structurizr.dsl.identifier" : "3be43de4-9fdc-4689-abd5-855f2fab46af"
+          },
+          "tags" : "Element,Deployment Node,Amazon Web Services - EventBridge"
+        }, {
+          "containerInstances" : [ {
+            "containerId" : "4",
+            "deploymentGroups" : [ "Default" ],
+            "environment" : "Production",
+            "id" : "47",
+            "instanceId" : 1,
+            "properties" : {
+              "structurizr.dsl.identifier" : "bbd43af5-a4e2-4181-89a0-422fb8372f1e"
+            },
+            "relationships" : [ {
+              "description" : "Makes API calls",
+              "destinationId" : "28",
+              "id" : "48",
+              "linkedRelationshipId" : "16",
+              "sourceId" : "47",
+              "technology" : "JSON/HTTPS"
+            } ],
+            "tags" : "Container Instance"
+          } ],
+          "environment" : "Production",
+          "id" : "46",
+          "instances" : "1",
+          "name" : "Amazon S3",
+          "properties" : {
+            "structurizr.dsl.identifier" : "df0ba7c0-e3ae-40e7-874e-9c58cc02e9f3"
+          },
+          "tags" : "Element,Deployment Node,Amazon Web Services - Simple Storage Service S3"
+        } ],
+        "environment" : "Production",
+        "id" : "26",
+        "instances" : "1",
+        "name" : "US-East-1",
+        "properties" : {
+          "structurizr.dsl.identifier" : "795ee05f-b9d3-4fa5-bd1c-76c2d6661ac0"
+        },
+        "tags" : "Element,Deployment Node,Amazon Web Services - Region"
+      } ],
+      "environment" : "Production",
+      "id" : "25",
+      "instances" : "1",
+      "name" : "Amazon Web Services",
+      "properties" : {
+        "structurizr.dsl.identifier" : "383d4190-d13d-45aa-9e26-361914428e03"
+      },
+      "tags" : "Element,Deployment Node,Amazon Web Services - Cloud"
+    } ],
+    "people" : [ {
+      "description" : "A person who wants to shorten a URL and share it.",
+      "id" : "1",
+      "location" : "Unspecified",
+      "name" : "User",
+      "properties" : {
+        "structurizr.dsl.identifier" : "user"
+      },
+      "relationships" : [ {
+        "description" : "Uses",
+        "destinationId" : "4",
+        "id" : "12",
+        "sourceId" : "1",
+        "tags" : "Relationship",
+        "technology" : "HTTPS"
+      }, {
+        "description" : "Uses",
+        "destinationId" : "3",
+        "id" : "13",
+        "linkedRelationshipId" : "12",
+        "sourceId" : "1",
+        "technology" : "HTTPS"
+      } ],
+      "tags" : "Element,Person"
+    }, {
+      "description" : "A staff member who monitors the system and manages links.",
+      "id" : "2",
+      "location" : "Unspecified",
+      "name" : "Administrator",
+      "properties" : {
+        "structurizr.dsl.identifier" : "admin"
+      },
+      "relationships" : [ {
+        "description" : "Uses",
+        "destinationId" : "4",
+        "id" : "14",
+        "sourceId" : "2",
+        "tags" : "Relationship",
+        "technology" : "HTTPS"
+      }, {
+        "description" : "Uses",
+        "destinationId" : "3",
+        "id" : "15",
+        "linkedRelationshipId" : "14",
+        "sourceId" : "2",
+        "technology" : "HTTPS"
+      } ],
+      "tags" : "Element,Person"
+    } ],
+    "softwareSystems" : [ {
+      "containers" : [ {
+        "description" : "The web interface that the user interacts with.",
+        "documentation" : { },
+        "id" : "4",
+        "name" : "Single-Page App",
+        "properties" : {
+          "structurizr.dsl.identifier" : "spa"
+        },
+        "relationships" : [ {
+          "description" : "Makes API calls",
+          "destinationId" : "5",
+          "id" : "16",
+          "sourceId" : "4",
+          "tags" : "Relationship",
+          "technology" : "JSON/HTTPS"
+        } ],
+        "tags" : "Element,Container",
+        "technology" : "JavaScript, React"
+      }, {
+        "description" : "Routes API requests to the appropriate backend Lambda function.",
+        "documentation" : { },
+        "id" : "5",
+        "name" : "API Gateway",
+        "properties" : {
+          "structurizr.dsl.identifier" : "apigateway"
+        },
+        "relationships" : [ {
+          "description" : "Routes 'POST /links' to",
+          "destinationId" : "6",
+          "id" : "17",
+          "sourceId" : "5",
+          "tags" : "Relationship"
+        }, {
+          "description" : "Routes 'GET /{shortCode}' to",
+          "destinationId" : "7",
+          "id" : "18",
+          "sourceId" : "5",
+          "tags" : "Relationship"
+        }, {
+          "description" : "Routes 'GET /links/{shortCode}/analytics' to",
+          "destinationId" : "8",
+          "id" : "19",
+          "sourceId" : "5",
+          "tags" : "Relationship"
+        } ],
+        "tags" : "Element,Container",
+        "technology" : "Amazon API Gateway"
+      }, {
+        "description" : "Handles creation of new short links.",
+        "documentation" : { },
+        "id" : "6",
+        "name" : "Shortening Service",
+        "properties" : {
+          "structurizr.dsl.identifier" : "shorteningservice"
+        },
+        "relationships" : [ {
+          "description" : "Publishes 'UrlCreatedEvent'",
+          "destinationId" : "11",
+          "id" : "23",
+          "sourceId" : "6",
+          "tags" : "Relationship",
+          "technology" : "AWS SDK"
+        } ],
+        "tags" : "Element,Container",
+        "technology" : "Java, AWS Lambda"
+      }, {
+        "description" : "Handles the lookup and redirection of a short link.",
+        "documentation" : { },
+        "id" : "7",
+        "name" : "Redirect Service",
+        "properties" : {
+          "structurizr.dsl.identifier" : "redirectservice"
+        },
+        "relationships" : [ {
+          "description" : "Reads link mapping from",
+          "destinationId" : "9",
+          "id" : "20",
+          "sourceId" : "7",
+          "tags" : "Relationship",
+          "technology" : "AWS SDK"
+        }, {
+          "description" : "Publishes 'UrlAccessedEvent'",
+          "destinationId" : "11",
+          "id" : "22",
+          "sourceId" : "7",
+          "tags" : "Relationship",
+          "technology" : "AWS SDK"
+        } ],
+        "tags" : "Element,Container",
+        "technology" : "Java, AWS Lambda"
+      }, {
+        "description" : "Processes link access events to gather analytics.",
+        "documentation" : { },
+        "id" : "8",
+        "name" : "Analytics Service",
+        "properties" : {
+          "structurizr.dsl.identifier" : "analyticsservice"
+        },
+        "relationships" : [ {
+          "description" : "Reads/Writes analytics data",
+          "destinationId" : "10",
+          "id" : "21",
+          "sourceId" : "8",
+          "tags" : "Relationship",
+          "technology" : "AWS SDK"
+        } ],
+        "tags" : "Element,Container",
+        "technology" : "Java, AWS Lambda"
+      }, {
+        "description" : "Stores the mapping of short codes to original URLs.",
+        "documentation" : { },
+        "id" : "9",
+        "name" : "URL Table",
+        "properties" : {
+          "structurizr.dsl.identifier" : "urltable"
+        },
+        "tags" : "Element,Container,Database",
+        "technology" : "Amazon DynamoDB"
+      }, {
+        "description" : "Stores aggregated analytics data for links.",
+        "documentation" : { },
+        "id" : "10",
+        "name" : "Analytics Table",
+        "properties" : {
+          "structurizr.dsl.identifier" : "analyticstable"
+        },
+        "tags" : "Element,Container,Database",
+        "technology" : "Amazon DynamoDB"
+      }, {
+        "description" : "Receives events from services and routes them to subscribers for asynchronous processing.",
+        "documentation" : { },
+        "id" : "11",
+        "name" : "Event Bus",
+        "properties" : {
+          "structurizr.dsl.identifier" : "eventbus"
+        },
+        "relationships" : [ {
+          "description" : "Pushes events to",
+          "destinationId" : "8",
+          "id" : "24",
+          "sourceId" : "11",
+          "tags" : "Relationship"
+        } ],
+        "tags" : "Element,Container",
+        "technology" : "Amazon EventBridge"
+      } ],
+      "description" : "Allows users to create short, redirectable URLs and provides analytics.",
+      "documentation" : { },
+      "id" : "3",
+      "location" : "Unspecified",
+      "name" : "Project QuickLink",
+      "properties" : {
+        "structurizr.dsl.identifier" : "quicklink"
+      },
+      "tags" : "Element,Software System"
+    } ]
+  },
+  "name" : "Project QuickLink",
+  "properties" : {
+    "structurizr.dsl" : "d29ya3NwYWNlICJQcm9qZWN0IFF1aWNrTGluayIgIkEgVVJMIHNob3J0ZW5pbmcgc2VydmljZS4iIHsKICAgIG1vZGVsIHsKICAgICAgICB1c2VyID0gcGVyc29uICJVc2VyIiAiQSBwZXJzb24gd2hvIHdhbnRzIHRvIHNob3J0ZW4gYSBVUkwgYW5kIHNoYXJlIGl0LiIKICAgICAgICBhZG1pbiA9IHBlcnNvbiAiQWRtaW5pc3RyYXRvciIgIkEgc3RhZmYgbWVtYmVyIHdobyBtb25pdG9ycyB0aGUgc3lzdGVtIGFuZCBtYW5hZ2VzIGxpbmtzLiIKCiAgICAgICAgcXVpY2tMaW5rID0gc29mdHdhcmVTeXN0ZW0gIlByb2plY3QgUXVpY2tMaW5rIiAiQWxsb3dzIHVzZXJzIHRvIGNyZWF0ZSBzaG9ydCwgcmVkaXJlY3RhYmxlIFVSTHMgYW5kIHByb3ZpZGVzIGFuYWx5dGljcy4iIHsKCiAgICAgICAgICAgIHNwYSA9IGNvbnRhaW5lciAiU2luZ2xlLVBhZ2UgQXBwIiAiVGhlIHdlYiBpbnRlcmZhY2UgdGhhdCB0aGUgdXNlciBpbnRlcmFjdHMgd2l0aC4iICJKYXZhU2NyaXB0LCBSZWFjdCIKICAgICAgICAgICAgYXBpR2F0ZXdheSA9IGNvbnRhaW5lciAiQVBJIEdhdGV3YXkiICJSb3V0ZXMgQVBJIHJlcXVlc3RzIHRvIHRoZSBhcHByb3ByaWF0ZSBiYWNrZW5kIExhbWJkYSBmdW5jdGlvbi4iICJBbWF6b24gQVBJIEdhdGV3YXkiCgogICAgICAgICAgICBzaG9ydGVuaW5nU2VydmljZSA9IGNvbnRhaW5lciAiU2hvcnRlbmluZyBTZXJ2aWNlIiAiSGFuZGxlcyBjcmVhdGlvbiBvZiBuZXcgc2hvcnQgbGlua3MuIiAiSmF2YSwgQVdTIExhbWJkYSIKICAgICAgICAgICAgcmVkaXJlY3RTZXJ2aWNlID0gY29udGFpbmVyICJSZWRpcmVjdCBTZXJ2aWNlIiAiSGFuZGxlcyB0aGUgbG9va3VwIGFuZCByZWRpcmVjdGlvbiBvZiBhIHNob3J0IGxpbmsuIiAiSmF2YSwgQVdTIExhbWJkYSIKICAgICAgICAgICAgYW5hbHl0aWNzU2VydmljZSA9IGNvbnRhaW5lciAiQW5hbHl0aWNzIFNlcnZpY2UiICJQcm9jZXNzZXMgbGluayBhY2Nlc3MgZXZlbnRzIHRvIGdhdGhlciBhbmFseXRpY3MuIiAiSmF2YSwgQVdTIExhbWJkYSIKCiAgICAgICAgICAgIHVybFRhYmxlID0gY29udGFpbmVyICJVUkwgVGFibGUiICJTdG9yZXMgdGhlIG1hcHBpbmcgb2Ygc2hvcnQgY29kZXMgdG8gb3JpZ2luYWwgVVJMcy4iICJBbWF6b24gRHluYW1vREIiICJEYXRhYmFzZSIKICAgICAgICAgICAgYW5hbHl0aWNzVGFibGUgPSBjb250YWluZXIgIkFuYWx5dGljcyBUYWJsZSIgIlN0b3JlcyBhZ2dyZWdhdGVkIGFuYWx5dGljcyBkYXRhIGZvciBsaW5rcy4iICJBbWF6b24gRHluYW1vREIiICJEYXRhYmFzZSIKICAgICAgICAgICAgCiAgICAgICAgICAgIGV2ZW50QnVzID0gY29udGFpbmVyICJFdmVudCBCdXMiICJSZWNlaXZlcyBldmVudHMgZnJvbSBzZXJ2aWNlcyBhbmQgcm91dGVzIHRoZW0gdG8gc3Vic2NyaWJlcnMgZm9yIGFzeW5jaHJvbm91cyBwcm9jZXNzaW5nLiIgIkFtYXpvbiBFdmVudEJyaWRnZSIKICAgICAgICB9CgogICAgICAgIHVzZXIgLT4gc3BhICJVc2VzIiAiSFRUUFMiCiAgICAgICAgYWRtaW4gLT4gc3BhICJVc2VzIiAiSFRUUFMiCgogICAgICAgIHNwYSAtPiBhcGlHYXRld2F5ICJNYWtlcyBBUEkgY2FsbHMiICJKU09OL0hUVFBTIgoKICAgICAgICBhcGlHYXRld2F5IC0+IHNob3J0ZW5pbmdTZXJ2aWNlICJSb3V0ZXMgJ1BPU1QgL2xpbmtzJyB0byIKICAgICAgICBhcGlHYXRld2F5IC0+IHJlZGlyZWN0U2VydmljZSAiUm91dGVzICdHRVQgL3tzaG9ydENvZGV9JyB0byIKICAgICAgICBhcGlHYXRld2F5IC0+IGFuYWx5dGljc1NlcnZpY2UgIlJvdXRlcyAnR0VUIC9saW5rcy97c2hvcnRDb2RlfS9hbmFseXRpY3MnIHRvIgoKICAgICAgICByZWRpcmVjdFNlcnZpY2UgLT4gdXJsVGFibGUgIlJlYWRzIGxpbmsgbWFwcGluZyBmcm9tIiAiQVdTIFNESyIKICAgICAgICBhbmFseXRpY3NTZXJ2aWNlIC0+IGFuYWx5dGljc1RhYmxlICJSZWFkcy9Xcml0ZXMgYW5hbHl0aWNzIGRhdGEiICJBV1MgU0RLIgoKICAgICAgICByZWRpcmVjdFNlcnZpY2UgLT4gZXZlbnRCdXMgIlB1Ymxpc2hlcyAnVXJsQWNjZXNzZWRFdmVudCciICJBV1MgU0RLIgogICAgICAgIHNob3J0ZW5pbmdTZXJ2aWNlIC0+IGV2ZW50QnVzICJQdWJsaXNoZXMgJ1VybENyZWF0ZWRFdmVudCciICJBV1MgU0RLIgogICAgICAgIGV2ZW50QnVzIC0+IGFuYWx5dGljc1NlcnZpY2UgIlB1c2hlcyBldmVudHMgdG8iCiAgICAgICAgCiAgICAgICAgbGl2ZSA9IGRlcGxveW1lbnRFbnZpcm9ubWVudCAiUHJvZHVjdGlvbiIgewogICAgICAgICAgICBkZXBsb3ltZW50Tm9kZSAiQW1hem9uIFdlYiBTZXJ2aWNlcyIgewogICAgICAgICAgICAgICAgdGFncyAiQW1hem9uIFdlYiBTZXJ2aWNlcyAtIENsb3VkIgogICAgICAgICAgICAgICAgCiAgICAgICAgICAgICAgICBkZXBsb3ltZW50Tm9kZSAiVVMtRWFzdC0xIiB7CiAgICAgICAgICAgICAgICAgICAgdGFncyAiQW1hem9uIFdlYiBTZXJ2aWNlcyAtIFJlZ2lvbiIKICAgICAgICAgICAgICAgIAogICAgICAgICAgICAgICAgICAgIGRlcGxveW1lbnROb2RlICAiQVBJIEdhdGV3YXkiIHsKICAgICAgICAgICAgICAgICAgICAgICAgdGFncyAiQW1hem9uIFdlYiBTZXJ2aWNlcyAtIEFQSSBHYXRld2F5IgogICAgICAgICAgICAgICAgICAgICAgICBjb250YWluZXJJbnN0YW5jZSBhcGlHYXRld2F5CiAgICAgICAgICAgICAgICAgICAgfQoKICAgICAgICAgICAgICAgICAgICBkZXBsb3ltZW50Tm9kZSAiQVdTIExhbWJkYSIgewogICAgICAgICAgICAgICAgICAgICAgICB0YWdzICJBbWF6b24gV2ViIFNlcnZpY2VzIC0gTGFtYmRhIgogICAgICAgICAgICAgICAgICAgICAgICBjb250YWluZXJJbnN0YW5jZSBzaG9ydGVuaW5nU2VydmljZSAiIiAiRGVwbG95bWVudCBOb2RlIgogICAgICAgICAgICAgICAgICAgICAgICBjb250YWluZXJJbnN0YW5jZSByZWRpcmVjdFNlcnZpY2UgIiIgIkRlcGxveW1lbnQgTm9kZSIKICAgICAgICAgICAgICAgICAgICAgICAgY29udGFpbmVySW5zdGFuY2UgYW5hbHl0aWNzU2VydmljZSAiIiAiRGVwbG95bWVudCBOb2RlIgogICAgICAgICAgICAgICAgICAgIH0KCiAgICAgICAgICAgICAgICAgICAgZGVwbG95bWVudE5vZGUgIkFtYXpvbiBEeW5hbW9EQiIgewogICAgICAgICAgICAgICAgICAgICAgICB0YWdzICJBbWF6b24gV2ViIFNlcnZpY2VzIC0gRHluYW1vREIiCiAgICAgICAgICAgICAgICAgICAgICAgIGNvbnRhaW5lckluc3RhbmNlIHVybFRhYmxlCiAgICAgICAgICAgICAgICAgICAgICAgIGNvbnRhaW5lckluc3RhbmNlIGFuYWx5dGljc1RhYmxlCiAgICAgICAgICAgICAgICAgICAgfQoKICAgICAgICAgICAgICAgICAgICBkZXBsb3ltZW50Tm9kZSAiQW1hem9uIEV2ZW50QnJpZGdlIiB7CiAgICAgICAgICAgICAgICAgICAgICAgIHRhZ3MgIkFtYXpvbiBXZWIgU2VydmljZXMgLSBFdmVudEJyaWRnZSIKICAgICAgICAgICAgICAgICAgICAgICAgY29udGFpbmVySW5zdGFuY2UgZXZlbnRCdXMKICAgICAgICAgICAgICAgICAgICB9CgogICAgICAgICAgICAgICAgICAgIGRlcGxveW1lbnROb2RlICJBbWF6b24gUzMiIHsKICAgICAgICAgICAgICAgICAgICAgICAgdGFncyAiQW1hem9uIFdlYiBTZXJ2aWNlcyAtIFNpbXBsZSBTdG9yYWdlIFNlcnZpY2UgUzMiCiAgICAgICAgICAgICAgICAgICAgICAgIGNvbnRhaW5lckluc3RhbmNlIHNwYQogICAgICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgICAgIH0KICAgICAgICAgICAgfQogICAgICAgIH0KICAgIH0KCiAgICB2aWV3cyB7CgogICAgICAgIHN5c3RlbUNvbnRleHQgcXVpY2tMaW5rICJTeXN0ZW1Db250ZXh0IiB7CiAgICAgICAgICAgIGluY2x1ZGUgKgogICAgICAgICAgICBhdXRvTGF5b3V0CiAgICAgICAgfQoKICAgICAgICBjb250YWluZXIgcXVpY2tMaW5rICJDb250YWluZXJzIiB7CiAgICAgICAgICAgIGluY2x1ZGUgKgogICAgICAgICAgICBhdXRvTGF5b3V0CiAgICAgICAgfQogICAgICAgIAogICAgICAgIGRlcGxveW1lbnQgcXVpY2tMaW5rIGxpdmUgewogICAgICAgICAgICBpbmNsdWRlICoKICAgICAgICAgICAgYXV0b0xheW91dAogICAgICAgIH0KCiAgICAgICAgc3R5bGVzIHsKICAgICAgICAgICAgZWxlbWVudCAiRWxlbWVudCIgewogICAgICAgICAgICAgICAgc2hhcGUgUm91bmRlZEJveAogICAgICAgICAgICAgICAgLy9iYWNrZ3JvdW5kICNmZmZmZmYKICAgICAgICAgICAgICAgIGNvbG9yICMwMDAwMDAKICAgICAgICAgICAgfQoKICAgICAgICAgICAgZWxlbWVudCAiUGVyc29uIiB7CiAgICAgICAgICAgICAgICBzaGFwZSBQZXJzb24KICAgICAgICAgICAgICAgIGJhY2tncm91bmQgIzA4NDI3YgogICAgICAgICAgICAgICAgY29sb3IgI2ZmZmZmZgogICAgICAgICAgICB9CiAgICAgICAgICAgIC8vZWxlbWVudCAiU29mdHdhcmUgU3lzdGVtIiB7IGJhY2tncm91bmQgIzExNjhiZDsgY29sb3IgI2ZmZmZmZiB9CiAgICAgICAgICAgIC8vZWxlbWVudCAiQ29udGFpbmVyIiB7IGJhY2tncm91bmQgIzQzOGRkNTsgY29sb3IgI2ZmZmZmZiB9CiAgICAgICAgICAgIGVsZW1lbnQgIkRhdGFiYXNlIiB7CiAgICAgICAgICAgICAgICBzaGFwZSBDeWxpbmRlcgogICAgICAgICAgICB9CiAgICAgICAgICAgIGVsZW1lbnQgIkRlcGxveW1lbnQgTm9kZSIgewogICAgICAgICAgICAgICAgc2hhcGUgV2ViQnJvd3NlcgogICAgICAgICAgICAgICAgYmFja2dyb3VuZCAjMjMyRjNFCiAgICAgICAgICAgICAgICBjb2xvciAjRkZGRkZGCiAgICAgICAgICAgIH0KICAgICAgICB9CgogICAgICAgIHRoZW1lIGh0dHBzOi8vc3RhdGljLnN0cnVjdHVyaXpyLmNvbS90aGVtZXMvYW1hem9uLXdlYi1zZXJ2aWNlcy0yMDIwLjA0LjMwL3RoZW1lLmpzb24KICAgIH0KCn0="
+  },
+  "views" : {
+    "configuration" : {
+      "branding" : { },
+      "lastSavedView" : "Deployment-001",
+      "metadataSymbols" : "SquareBrackets",
+      "styles" : {
+        "elements" : [ {
+          "color" : "#000000",
+          "shape" : "RoundedBox",
+          "tag" : "Element"
+        }, {
+          "background" : "#08427b",
+          "color" : "#ffffff",
+          "shape" : "Person",
+          "tag" : "Person"
+        }, {
+          "shape" : "Cylinder",
+          "tag" : "Database"
+        }, {
+          "background" : "#232f3e",
+          "color" : "#ffffff",
+          "shape" : "WebBrowser",
+          "tag" : "Deployment Node"
+        } ]
+      },
+      "terminology" : { },
+      "themes" : [ "https://static.structurizr.com/themes/amazon-web-services-2020.04.30/theme.json" ]
+    },
+    "containerViews" : [ {
+      "automaticLayout" : {
+        "applied" : false,
+        "edgeSeparation" : 0,
+        "implementation" : "Graphviz",
+        "nodeSeparation" : 300,
+        "rankDirection" : "TopBottom",
+        "rankSeparation" : 300,
+        "vertices" : false
+      },
+      "elements" : [ {
+        "id" : "1",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "2",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "4",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "5",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "6",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "7",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "8",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "9",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "10",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "11",
+        "x" : 0,
+        "y" : 0
+      } ],
+      "externalSoftwareSystemBoundariesVisible" : false,
+      "key" : "Containers",
+      "order" : 2,
+      "relationships" : [ {
+        "id" : "12"
+      }, {
+        "id" : "14"
+      }, {
+        "id" : "16"
+      }, {
+        "id" : "17"
+      }, {
+        "id" : "18"
+      }, {
+        "id" : "19"
+      }, {
+        "id" : "20"
+      }, {
+        "id" : "21"
+      }, {
+        "id" : "22"
+      }, {
+        "id" : "23"
+      }, {
+        "id" : "24"
+      } ],
+      "softwareSystemId" : "3"
+    } ],
+    "deploymentViews" : [ {
+      "automaticLayout" : {
+        "applied" : true,
+        "edgeSeparation" : 0,
+        "implementation" : "Graphviz",
+        "nodeSeparation" : 300,
+        "rankDirection" : "TopBottom",
+        "rankSeparation" : 300,
+        "vertices" : false
+      },
+      "dimensions" : {
+        "height" : 2833,
+        "width" : 2483
+      },
+      "elements" : [ {
+        "id" : "25",
+        "x" : 175,
+        "y" : 175
+      }, {
+        "id" : "26",
+        "x" : 175,
+        "y" : 175
+      }, {
+        "id" : "27",
+        "x" : 175,
+        "y" : 175
+      }, {
+        "id" : "28",
+        "x" : 1009,
+        "y" : 825
+      }, {
+        "id" : "29",
+        "x" : 175,
+        "y" : 175
+      }, {
+        "id" : "30",
+        "x" : 259,
+        "y" : 1425
+      }, {
+        "id" : "32",
+        "x" : 1009,
+        "y" : 1425
+      }, {
+        "id" : "34",
+        "x" : 1759,
+        "y" : 1425
+      }, {
+        "id" : "36",
+        "x" : 175,
+        "y" : 175
+      }, {
+        "id" : "37",
+        "x" : 1022,
+        "y" : 2025
+      }, {
+        "id" : "39",
+        "x" : 1772,
+        "y" : 2025
+      }, {
+        "id" : "41",
+        "x" : 175,
+        "y" : 175
+      }, {
+        "id" : "42",
+        "x" : 259,
+        "y" : 2025
+      }, {
+        "id" : "46",
+        "x" : 175,
+        "y" : 175
+      }, {
+        "id" : "47",
+        "x" : 1009,
+        "y" : 225
+      } ],
+      "environment" : "Production",
+      "generatedKey" : true,
+      "key" : "Deployment-001",
+      "order" : 3,
+      "relationships" : [ {
+        "id" : "31"
+      }, {
+        "id" : "33"
+      }, {
+        "id" : "35"
+      }, {
+        "id" : "38"
+      }, {
+        "id" : "40"
+      }, {
+        "id" : "43"
+      }, {
+        "id" : "44"
+      }, {
+        "id" : "45",
+        "vertices" : [ {
+          "x" : 842,
+          "y" : 1921
+        }, {
+          "x" : 1609,
+          "y" : 1829
+        } ]
+      }, {
+        "id" : "48"
+      } ],
+      "softwareSystemId" : "3"
+    } ],
+    "systemContextViews" : [ {
+      "automaticLayout" : {
+        "applied" : false,
+        "edgeSeparation" : 0,
+        "implementation" : "Graphviz",
+        "nodeSeparation" : 300,
+        "rankDirection" : "TopBottom",
+        "rankSeparation" : 300,
+        "vertices" : false
+      },
+      "elements" : [ {
+        "id" : "1",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "2",
+        "x" : 0,
+        "y" : 0
+      }, {
+        "id" : "3",
+        "x" : 0,
+        "y" : 0
+      } ],
+      "enterpriseBoundaryVisible" : true,
+      "key" : "SystemContext",
+      "order" : 1,
+      "relationships" : [ {
+        "id" : "13"
+      }, {
+        "id" : "15"
+      } ],
+      "softwareSystemId" : "3"
+    } ]
+  }
+}

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuickLink URL Shortener</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f2f5;
+        }
+
+        .container {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        input[type="url"] {
+            width: 300px;
+            padding: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        button {
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+        }
+
+        #result {
+            margin-top: 1rem;
+        }
+
+        #result a {
+            color: #1a0dab;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>QuickLink URL Shortener</h1>
+        <form id="urlForm">
+            <input type="url" id="originalUrl" placeholder="Enter your long URL here" required>
+            <br>
+            <button type="submit">Shorten URL</button>
+        </form>
+        <div id="result"></div>
+    </div>
+
+    <script>
+        const baseUrl = '${apiUrl}';
+        const form = document.getElementById('urlForm');
+        const resultDiv = document.getElementById('result');
+
+        form.addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const originalUrl = document.getElementById('originalUrl').value;
+            resultDiv.textContent = 'Shortening...';
+
+            try {
+                const response = await fetch(baseUrl + '/links', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ originalUrl: originalUrl })
+                });
+
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+
+                const data = await response.json();
+                // The shortUrl is constructed from the API base URL and the shortCode from the response
+                const shortUrl = baseUrl + '/' + data.shortCode;
+
+                resultDiv.innerHTML = 'Your short URL is: <a href=' + shortUrl + ' target="_blank">' + shortUrl + '</a>';
+
+            } catch (error) {
+                resultDiv.textContent = 'Error: Could not shorten URL.';
+                console.error('Error:', error);
+            }
+        });
+    </script>
+</body>
+
+</html>
