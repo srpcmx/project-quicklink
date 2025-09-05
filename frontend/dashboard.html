@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Real-Time Analytics</title>
+    <style>
+        body { font-family: sans-serif; }
+        table { width: 100%; border-collapse: collapse; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+        th { background-color: #f2f2f2; }
+    </style>
+</head>
+<body>
+    <h1>Real-Time Link Clicks</h1>
+    <table id="analyticsTable">
+        <thead>
+            <tr>
+                <th>Short Code</th>
+                <th>Clicks</th>
+            </tr>
+        </thead>
+        <tbody>
+        </tbody>
+    </table>
+
+    <script>
+        const websocketUrl = '${websocketUrl}';
+        const tableBody = document.querySelector("#analyticsTable tbody");
+
+        const socket = new WebSocket(websocketUrl);
+
+        socket.onopen = (event) => {
+            console.log("WebSocket connection established.");
+        };
+
+        socket.onmessage = (event) => {
+            const data = JSON.parse(event.data);
+            const shortCode = data.shortCode;
+            const clicks = data.clicks;
+
+            let row = document.getElementById(shortCode);
+            if (!row) {
+                row = tableBody.insertRow();
+                row.id = shortCode;
+                const cell1 = row.insertCell(0);
+                const cell2 = row.insertCell(1);
+                cell1.textContent = shortCode;
+            }
+            
+            row.cells[1].textContent = clicks;
+        };
+
+        socket.onclose = (event) => {
+            console.log("WebSocket connection closed.");
+        };
+
+        socket.onerror = (error) => {
+            console.error("WebSocket error:", error);
+        };
+    </script>
+</body>
+</html>

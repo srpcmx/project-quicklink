@@ -8,6 +8,9 @@ resource "aws_dynamodb_table" "analytics_table" {
     name = "shortCode"
     type = "S"
   }
+  
+  stream_enabled   = true
+  stream_view_type = "NEW_IMAGE"
 }
 
 # IAM Role and Policy for the Analytics Service
